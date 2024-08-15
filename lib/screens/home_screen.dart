@@ -5,7 +5,8 @@ import 'package:get/get.dart';
 import 'package:quotes2/controllers/profile_controller.dart';
 import 'package:quotes2/controllers/quote_controller.dart';
 import 'package:quotes2/screens/profile_screen.dart';
-
+import 'package:quotes2/utils/constant/colors.dart';
+import 'package:gap/gap.dart';
 
 class HomeScreen extends StatelessWidget {
   final QuotesController quotesController = Get.put(QuotesController());
@@ -23,6 +24,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: primaryColor,
       appBar: AppBar(
         title: Obx(() {
           final fullName = profileController.fullName.value;
@@ -55,15 +57,22 @@ class HomeScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextField(
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     hintText: 'Search quotes...',
-                    border: OutlineInputBorder(),
+                    prefixIcon: const Icon(Icons.search),
+                    hintStyle: const TextStyle(color: Colors.white),
+                    iconColor: Colors.white,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(14),
+                      borderSide: const BorderSide(color: Colors.white, width: 3),
+                    ),
                   ),
                   onChanged: (query) {
                     quotesController.searchQuotes(query);
                   },
                 ),
               ),
+              const Gap(10),
               Expanded(
                 child: ListView.builder(
                   controller: _scrollController,

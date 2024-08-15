@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:quotes2/controllers/onboarding_controller.dart';
 import 'package:quotes2/utils/constant/images.dart';
 
 

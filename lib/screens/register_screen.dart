@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:quotes/controllers/register_controller.dart';
-import 'package:quotes/screens/login_screen.dart';
+import 'package:quotes2/controllers/register_controller.dart';
+import 'package:quotes2/screens/login_screen.dart';
 
 
 

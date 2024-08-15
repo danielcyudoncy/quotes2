@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quotes/controllers/splash_controller.dart';
-import 'package:quotes/utils/constant/images.dart';
+import 'package:quotes2/controllers/splash_controller.dart';
+import 'package:quotes2/utils/constant/images.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});

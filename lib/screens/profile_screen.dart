@@ -3,10 +3,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:quotes/controllers/auth_controller.dart';
-import 'package:quotes/controllers/profile_controller.dart';
-import 'package:quotes/utils/constant/colors.dart';
-import 'package:quotes/utils/constant/sizes.dart'; 
+import 'package:quotes2/controllers/auth_controller.dart';
+import 'package:quotes2/controllers/profile_controller.dart';
+import 'package:quotes2/utils/constant/colors.dart';
+import 'package:quotes2/utils/constant/sizes.dart'; 
 
 
 class ProfileScreen extends StatefulWidget {

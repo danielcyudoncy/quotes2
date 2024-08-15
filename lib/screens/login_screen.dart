@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:quotes2/controllers/login_controller.dart';
+import 'package:quotes2/screens/register_screen.dart';
+import 'package:quotes2/utils/validators/validators.dart';
 
 
 class LoginScreen extends StatelessWidget {
@@ -201,7 +204,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Get.offAll(() => RegisterScreen());
+                        Get.offAll(() => const RegisterScreen());
                       },
                       child: const Text(
                         'Register',

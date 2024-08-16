@@ -62,6 +62,7 @@ class HomeScreen extends StatelessWidget {
                     prefixIcon: const Icon(Icons.search),
                     hintStyle: const TextStyle(color: Colors.white),
                     iconColor: Colors.white,
+                    prefixIconColor: Colors.white,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(14),
                       borderSide: const BorderSide(color: Colors.white, width: 3),

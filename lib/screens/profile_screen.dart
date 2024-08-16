@@ -26,7 +26,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final XFile? image = await picker.pickImage(source: ImageSource.gallery);
     if (image != null) {
       profileController.pickImage(image.path);
-      print('Picked image: ${image.path}');
     }
   }
 

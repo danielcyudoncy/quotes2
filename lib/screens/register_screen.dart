@@ -142,30 +142,7 @@ class RegisterScreen extends StatelessWidget {
                     onChanged: (value) => registerController.confirmPassword.value = value,
                   ),
                   const SizedBox(height: 15.0),
-                  TextFormField(
-                    controller: registerController.phoneNumberController,
-                    decoration: InputDecoration(
-                      labelText: 'Phone Number',
-                      hintText: 'Enter your phone number',
-                      hintStyle: const TextStyle(color: Colors.black26),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.black12),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                    keyboardType: TextInputType.phone,
-                    validator: (value) {
-                      if (value == null || value.isEmpty || value.length != 11) {
-                        return 'Phone number should be exactly 11 digits';
-                      }
-                      return null;
-                    },
-                    onChanged: (value) => registerController.phoneNumber.value = value,
-                  ),
-                  const SizedBox(height: 15.0),
+              
                   Row(
                     children: [
                       Checkbox(

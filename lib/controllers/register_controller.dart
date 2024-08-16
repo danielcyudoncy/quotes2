@@ -59,7 +59,7 @@ class RegisterController extends GetxController {
         await _userService.saveUserData(user.uid, fullNameController.text, phoneNumberController.text);
 
         fullName.value = fullNameController.text;
-        Get.offNamed('/profile'); 
+        Get.offAllNamed('/profile'); 
       }
     } catch (e) {
  

@@ -1,4 +1,4 @@
-Quote2
+Quote App
 Overview
 Welcome to Quote! Quote is a powerful and user-friendly application that fetches data from Dummyjson API allowing users to read quotes from renowned people. The app is intuitive, and responsive, and provides a rich set of functionalities for updating profiles and searching quotes.
 
@@ -16,7 +16,7 @@ Contributors
 None
 
 Getting Started
-To start using Quotes_API, follow these simple steps:
+To start using Quotes_App, follow these simple steps:
 
 Prerequisites
 Ensure you have a compatible Android device

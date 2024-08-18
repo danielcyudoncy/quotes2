@@ -4,11 +4,8 @@ import 'package:get/get.dart';
 import 'package:quotes2/controllers/register_controller.dart';
 import 'package:quotes2/screens/login_screen.dart';
 
-
-
 class RegisterScreen extends StatelessWidget {
-   const RegisterScreen({super.key});
-
+  const RegisterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +14,7 @@ class RegisterScreen extends StatelessWidget {
       appBar: AppBar(),
       body: SingleChildScrollView(
         child: Padding(
-          padding:  const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(20.0),
           child: Obx(
             () => Form(
               key: registerController.formKey,
@@ -33,123 +30,45 @@ class RegisterScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 30.0),
-                  TextFormField(
+                  _buildTextFormField(
                     controller: registerController.fullNameController,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter Full name';
-                      }
-                      return null;
-                    },
-                    decoration: InputDecoration(
-                      label: const Text('Full Name'),
-                      hintText: 'Enter Full Name',
-                      hintStyle: const TextStyle(color: Colors.black26),
-                      border: OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.black12),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.black12),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
+                    label: 'Full Name',
+                    hint: 'Enter Full Name',
+                    validator: (value) => value?.isEmpty ?? true ? 'Please enter Full name' : null,
                     onChanged: (value) => registerController.fullName.value = value,
                   ),
                   const SizedBox(height: 15.0),
-                  TextFormField(
+                  _buildTextFormField(
                     controller: registerController.emailController,
-                    decoration: InputDecoration(
-                      labelText: 'Email',
-                      hintText: 'Enter your email',
-                      hintStyle: const TextStyle(color: Colors.black26),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.black12),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
+                    label: 'Email',
+                    hint: 'Enter your email',
                     keyboardType: TextInputType.emailAddress,
                     validator: (value) => registerController.validateEmail(value),
                     onChanged: (value) => registerController.email.value = value,
                   ),
                   const SizedBox(height: 15.0),
-                  TextFormField(
+                  _buildPasswordFormField(
                     controller: registerController.passwordController,
-                    obscureText: registerController.toggled.value,
-                    obscuringCharacter: '*',
-                    validator: (value) {
-                      if (value == null || value.isEmpty || value.length < 6) {
-                        return 'Password must be at least 6 characters long!';
-                      }
-                      return null;
-                    },
-                    decoration: InputDecoration(
-                      suffixIcon: IconButton(
-                        icon: registerController.toggled.value
-                            ? const Icon(Icons.visibility_off)
-                            : const Icon(Icons.visibility),
-                        onPressed: () {
-                          registerController.toggled.toggle();
-                        },
-                      ),
-                      labelText: 'Password',
-                      hintText: 'Enter your password',
-                      hintStyle: const TextStyle(color: Colors.black26),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.black12),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
+                    label: 'Password',
+                    hint: 'Enter your password',
                     onChanged: (value) => registerController.password.value = value,
+                    toggle: registerController.toggled,
                   ),
                   const SizedBox(height: 15.0),
-                  TextFormField(
+                  _buildPasswordFormField(
                     controller: registerController.confirmPasswordController,
-                    decoration: InputDecoration(
-                      suffixIcon: IconButton(
-                        icon: registerController.toggled.value
-                            ? const Icon(Icons.visibility_off)
-                            : const Icon(Icons.visibility),
-                        onPressed: () {
-                          registerController.toggled.toggle();
-                        },
-                      ),
-                      labelText: 'Confirm Password',
-                      hintText: 'Re-enter your password',
-                      hintStyle: const TextStyle(color: Colors.black26),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.black12),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                    obscureText: registerController.toggled.value,
-                    obscuringCharacter: '*',
-                    validator: (value) {
-                      if (value != registerController.password.value) {
-                        return "Passwords don't match";
-                      }
-                      return null;
-                    },
+                    label: 'Confirm Password',
+                    hint: 'Re-enter your password',
+                    validator: (value) => value != registerController.password.value ? "Passwords don't match" : null,
                     onChanged: (value) => registerController.confirmPassword.value = value,
+                    toggle: registerController.toggled,
                   ),
                   const SizedBox(height: 15.0),
-              
                   Row(
                     children: [
                       Checkbox(
                         value: registerController.agreePersonalData.value,
-                        onChanged: (value) {
-                          registerController.agreePersonalData.value = value!;
-                        },
+                        onChanged: (value) => registerController.agreePersonalData.value = value ?? false,
                         activeColor: Colors.blue,
                       ),
                       const Text(
@@ -168,9 +87,7 @@ class RegisterScreen extends StatelessWidget {
                     height: 45,
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: () {
-                        registerController.register();
-                      },
+                      onPressed: registerController.register,
                       style: ElevatedButton.styleFrom(
                         minimumSize: const Size(350, 50),
                         backgroundColor: const Color.fromARGB(255, 31, 44, 226),
@@ -183,7 +100,6 @@ class RegisterScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 25.0),
-                  
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -214,11 +130,11 @@ class RegisterScreen extends StatelessWidget {
                     height: 45,
                     child: ElevatedButton(
                       onPressed: () {},
-                      child:  Row(
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
-                           SvgPicture.asset('assets/images/icon-google.svg'),                      
+                          SvgPicture.asset('assets/images/icon-google.svg'),
                           const SizedBox(width: 15.0),
                           const Text(
                             'Google',
@@ -229,7 +145,6 @@ class RegisterScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 20.0),
-                  
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -238,9 +153,7 @@ class RegisterScreen extends StatelessWidget {
                         style: TextStyle(color: Colors.black45),
                       ),
                       GestureDetector(
-                        onTap: () {
-                          Get.to(() => const LoginScreen());
-                        },
+                        onTap: () => Get.to(() => const LoginScreen()),
                         child: const Text(
                           'Login',
                           style: TextStyle(
@@ -256,6 +169,74 @@ class RegisterScreen extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildTextFormField({
+    required TextEditingController controller,
+    required String label,
+    required String hint,
+    TextInputType? keyboardType,
+    String? Function(String?)? validator,
+    void Function(String)? onChanged,
+  }) {
+    return TextFormField(
+      controller: controller,
+      decoration: InputDecoration(
+        labelText: label,
+        hintText: hint,
+        hintStyle: const TextStyle(color: Colors.black26),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderSide: const BorderSide(color: Colors.black12),
+          borderRadius: BorderRadius.circular(10),
+        ),
+      ),
+      keyboardType: keyboardType,
+      validator: validator,
+      onChanged: onChanged,
+    );
+  }
+
+  Widget _buildPasswordFormField({
+    required TextEditingController controller,
+    required String label,
+    required String hint,
+    String? Function(String?)? validator,
+    required RxBool toggle,
+    void Function(String)? onChanged,
+  }) {
+    return TextFormField(
+      controller: controller,
+      obscureText: toggle.value,
+      obscuringCharacter: '*',
+      validator: validator ?? (value) {
+        if (value == null || value.isEmpty || value.length < 6) {
+          return 'Password must be at least 6 characters long!';
+        }
+        return null;
+      },
+      decoration: InputDecoration(
+        suffixIcon: IconButton(
+          icon: Icon(
+            toggle.value ? Icons.visibility_off : Icons.visibility,
+          ),
+          onPressed: () => toggle.toggle(),
+        ),
+        labelText: label,
+        hintText: hint,
+        hintStyle: const TextStyle(color: Colors.black26),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderSide: const BorderSide(color: Colors.black12),
+          borderRadius: BorderRadius.circular(10),
+        ),
+      ),
+      onChanged: onChanged,
     );
   }
 }

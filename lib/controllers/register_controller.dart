@@ -34,55 +34,53 @@ class RegisterController extends GetxController {
   }
 
   void register() async {
-  if (formKey.currentState!.validate() && agreePersonalData.value) {
-    if (passwordController.text != confirmPasswordController.text) {
+    if (formKey.currentState!.validate() && agreePersonalData.value) {
+      if (passwordController.text != confirmPasswordController.text) {
+        Get.snackbar(
+          'Error',
+          'Passwords do not match',
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.red,
+          colorText: Colors.white,
+        );
+        return;
+      }
+
+      try {
+        UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
+          email: emailController.text.trim(),
+          password: passwordController.text.trim(),
+        );
+
+        User? user = userCredential.user;
+
+        if (user != null) {
+          await user.updateProfile(displayName: fullNameController.text);
+          await _userService.saveUserData(user.uid, fullNameController.text, phoneNumberController.text);
+
+          fullName.value = fullNameController.text;
+          Get.offAllNamed('/profile'); // Ensure this route is properly set up
+        }
+      } catch (e) {
+        print("Registration error: $e"); // Add this line for debugging
+        Get.snackbar(
+          'Registration Failed',
+          e.toString(),
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.red,
+          colorText: Colors.white,
+        );
+      }
+    } else if (!agreePersonalData.value) {
       Get.snackbar(
         'Error',
-        'Passwords do not match',
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.red,
-        colorText: Colors.white,
-      );
-      return;
-    }
-
-    try {
-      UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
-        email: emailController.text.trim(),
-        password: passwordController.text.trim(),
-      );
-
-      User? user = userCredential.user;
-
-      if (user != null) {
-        await user.updateProfile(displayName: fullNameController.text);
-        await _userService.saveUserData(user.uid, fullNameController.text, phoneNumberController.text);
-
-        fullName.value = fullNameController.text;
-        Get.offAllNamed('/profile'); 
-      }
-    } catch (e) {
- 
-      Get.snackbar(
-        'Registration Failed',
-        e.toString(),
+        'Please agree to the processing of personal data',
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: Colors.red,
         colorText: Colors.white,
       );
     }
-  } else if (!agreePersonalData.value) {
-    Get.snackbar(
-      'Error',
-      'Please agree to the processing of personal data',
-      snackPosition: SnackPosition.BOTTOM,
-      backgroundColor: Colors.red,
-      colorText: Colors.white,
-    );
   }
-}
-
-
 
   String? validateEmail(String? value) {
     if (value == null || value.isEmpty) {

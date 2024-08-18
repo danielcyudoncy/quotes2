@@ -1,13 +1,11 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:quotes2/controllers/auth_controller.dart';
 import 'package:quotes2/controllers/profile_controller.dart';
 import 'package:quotes2/utils/constant/colors.dart';
-import 'package:quotes2/utils/constant/sizes.dart'; 
-
+import 'package:quotes2/utils/constant/sizes.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -17,8 +15,7 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  final ProfileController profileController = Get.find<ProfileController>(); 
-
+  final ProfileController profileController = Get.find<ProfileController>();
   final AuthController authController = Get.find<AuthController>();
 
   Future<void> _pickImage() async {
@@ -33,13 +30,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,  
+        automaticallyImplyLeading: false,
         actions: [
           IconButton(
             icon: const Icon(Icons.logout),
             onPressed: () {
-              authController.logout();  
-              Get.offAllNamed('/onboarding');  
+              authController.logout();
+              Get.offAllNamed('/onboarding');
             },
           ),
         ],
@@ -65,7 +62,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       radius: 70,
                       backgroundImage: profileController.profileImage.value.isNotEmpty
                           ? FileImage(File(profileController.profileImage.value))
-                          : const AssetImage('assets/default_profile.png') as ImageProvider, 
+                          : const AssetImage('assets/default_profile.png') as ImageProvider,
                       child: profileController.profileImage.value.isEmpty
                           ? const Icon(Icons.camera_alt, size: 50, color: primaryColor)
                           : null,
@@ -103,7 +100,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ElevatedButton(
                 onPressed: () {
                   profileController.updateProfile();
-                  Get.back(); 
+                  Get.back();
                 },
                 style: ElevatedButton.styleFrom(
                   minimumSize: const Size(350, 50),
@@ -118,8 +115,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  authController.logout();  
-                  Get.offAllNamed('/onboarding');  
+                  authController.logout();
+                  Get.offAllNamed('/onboarding');
                 },
                 style: ElevatedButton.styleFrom(
                   minimumSize: const Size(350, 50),
@@ -134,7 +131,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ],
           ),
         ),
-        
       ),
     );
   }

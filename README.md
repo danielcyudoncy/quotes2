@@ -1,17 +1,25 @@
-# quotes2
+Quote App
+Overview
+Welcome to Quote! Quote is a powerful and user-friendly application that fetches data from Dummyjson API allowing users to read quotes from renowned people. The app is intuitive, and responsive, and provides a rich set of functionalities for updating profiles and searching quotes.
 
-A new Flutter project.
+Features
+User Authentication:
+Setup Firebase: This includes registration, login, and log-out, using Firebase.
+API: View a list of quotes that have been fetched using the dummyJson API.
+Search Quotes: The user is able to search the list of quotes
+User Interface:
+Intuitive Controls: Ensure the interface is easy to navigate with touch gestures and simple menu structures.
+Advanced Features:
+Upload Profile Picture User is able to upload a profile picture when signed in.
+Cloud Sync: Enable cloud synchronization to save user email and password to Firebase
+Contributors
+None
 
-## Getting Started
+Getting Started
+To start using Quotes_App, follow these simple steps:
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# quotes2
+Prerequisites
+Ensure you have a compatible Android device
+Ensure your device is connected to the internet
+Login:danielcyudoncy@gmail.com
+password: danielcy

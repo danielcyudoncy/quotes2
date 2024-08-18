@@ -9,6 +9,7 @@ import 'package:quotes2/utils/constant/sizes.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
+  
 
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();

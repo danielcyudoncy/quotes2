@@ -59,10 +59,9 @@ class RegisterController extends GetxController {
           await _userService.saveUserData(user.uid, fullNameController.text, phoneNumberController.text);
 
           fullName.value = fullNameController.text;
-          Get.offAllNamed('/profile'); // Ensure this route is properly set up
+          Get.offAllNamed('/profile'); 
         }
       } catch (e) {
-        print("Registration error: $e"); // Add this line for debugging
         Get.snackbar(
           'Registration Failed',
           e.toString(),
